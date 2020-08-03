@@ -1,0 +1,8 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Lints the project using swiftlint"
+  lane :lint do
+    danger(danger_id: 'lint', dangerfile: 'Dangerfile')
+  end
+end
