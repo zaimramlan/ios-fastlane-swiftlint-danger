@@ -1,0 +1,28 @@
+name: Lint
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    container: zaimramlan/swift-swiftlint-ruby:1.0.0
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@v2
+      with:
+        # to fix issue with using `danger`
+        # https://bit.ly/33cC4Sl
+        fetch-depth: 100
+
+    - name: Install dependencies
+      run: bundle install
+      env:
+        DANGER_SKIP_SWIFTLINT_INSTALL: 'YES'
+
+    - name: Lint codes
+      run: bundle exec fastlane lint
+      env:
+        DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
