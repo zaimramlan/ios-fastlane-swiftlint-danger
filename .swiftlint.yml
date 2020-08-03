@@ -1,0 +1,7 @@
+whitelist_rules:
+  - discouraged_optional_boolean
+  - discouraged_optional_collection
+  - switch_case_alignment
+  - switch_case_on_newline
+  - syntactic_sugar
+  - toggle_bool
