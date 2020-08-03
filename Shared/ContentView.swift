@@ -11,6 +11,15 @@ struct ContentView: View {
     var body: some View {
         Text("Hello, world!").padding()
     }
+
+    func testViolation() {
+        switch "test" {
+        case "a": break
+            case "b": break
+        default:
+            break
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
